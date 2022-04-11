@@ -24,13 +24,14 @@ export type OrderProps = OrderStyleProps & {
 
 type Props = {
   data: OrderProps;
+  onPress: () => void;
 };
 
-export function Order({ data }: Props) {
+export function Order({ data, onPress }: Props) {
   const theme = useTheme();
 
   return (
-    <Container>
+    <Container onPress={onPress}>
       <Status status={data.status} />
 
       <Content>

@@ -29,11 +29,16 @@ export function SignInForm() {
   }
 
   function handleForgotPassword() {
-    auth()
+    if (email) {
+      auth()
       .sendPasswordResetEmail(email)
       .then(() => Alert.alert('Redefenir senha!', 'Enviamos um email para voce'))
       .catch(error => console.log(error))
       .finally(() => setIsLoading(false))
+    } else {
+      Alert.alert('Atenção', 'informe o e-mail para conseguir fazer uma nova senha')
+    }
+
   }
 
   return (

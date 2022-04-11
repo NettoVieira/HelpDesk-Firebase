@@ -31,6 +31,16 @@ export function Orders() {
 
     return () => subscriber();
   }, [status]);
+  
+  async function handleFinishOrder() {
+    try {
+      setIsLoading(true);
+
+      firestore().collection('orders')
+    } catch (error) {
+      
+    }
+  }
 
   return (
     <Container>
@@ -47,7 +57,7 @@ export function Orders() {
           : <FlatList
             data={orders}
             keyExtractor={item => item.id}
-            renderItem={({ item }) => <Order data={item} />}
+            renderItem={({ item }) => <Order data={item} onPress={handleFinishOrder}/>}
             contentContainerStyle={{ paddingBottom: 100 }}
             showsVerticalScrollIndicator={false}
             style={{ flex: 1 }}
